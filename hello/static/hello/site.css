@@ -1,9 +1,9 @@
 .navbar {
-  background-color: rgb(159, 18, 154);
+  background-color: lightslategray;
   font-size: 1em;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  color: rgb(43, 118, 49);
+  color: white;
   padding: 8px 5px 8px 5px;
 }
 
@@ -28,10 +28,10 @@
 }
 
 input[name="message"] {
-  width: 75%;
+  width: 80%;
 }
 .message_list th,
 td {
   text-align: left;
-  padding-right: 25px;
+  padding-right: 15px;
 }
