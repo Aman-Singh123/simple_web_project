@@ -7,7 +7,7 @@ home_list_view = views.HomeListView.as_view(
     template_name="hello/home.html",
 )
 urlpatterns = [
-   path("", home_list_view, name="home"),
+   path("", home_list_view, name="home1"),
    path("about/", views.about, name="about"),
    path("contact/", views.contact, name="contact"),
    path("log/", views.log_message, name="log"),

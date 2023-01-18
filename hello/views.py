@@ -31,8 +31,8 @@ def  log_message(request):
             message = form.save(commit=False)
             message.log_date = datetime.datetime.now()
             message.save()
-            return redirect("home")  # here we use the redirect mehtod for not use the hard coded 
+             # here we use the redirect mehtod for not use the hard coded 
             # here we use this also 
-            #return render(request,"hello/home.html")
+            return render(request,"hello/home.html")
     else:
         return render(request, "hello/log_message.html", {"form": form})

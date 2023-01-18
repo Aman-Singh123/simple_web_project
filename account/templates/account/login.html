@@ -1,10 +1,12 @@
 {% extends 'account/Base.html' %} 
 {% block title %}login{% endblock title %} 
 {%block content %}
+
 <p>{{ message }}</p>
 <form method="post">
-  {{ form.as_p }} {% csrf_token %}
+  {%csrf_token%}
+  {{ form.as_p }}
   <button type="submit">Submit</button>
 </form>
 {% endblock content %} 
-<
+
