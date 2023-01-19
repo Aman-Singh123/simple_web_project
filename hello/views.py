@@ -11,8 +11,8 @@ import json
 from .models import LogMessage
 
 def home(request):
-    lg=LogMessage.objects.all()
-    return render(request,'hello/home.html',{"lg":lg})
+    lg=LogMessage.objects.values()
+    return JsonResponse(list(lg),safe=False)
 
 
 def about(request):
@@ -27,7 +27,6 @@ def  log_message(request):
     form = LogMessageForm(request.POST or None)
     if request.method == "POST":
         if form.is_valid():
-           
             message = form.save(commit=False)
             message.log_date = datetime.datetime.now()
             message.save()
