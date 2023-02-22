@@ -9,7 +9,10 @@ import datetime
 from django.http import JsonResponse
 import json
 from .models import LogMessage
-
+from rest_framework.response import Response
+from .serializer import LogMessageSerializer
+from rest_framework.decorators import api_view
+from rest_framework import status
 def home(request):
     lg=LogMessage.objects.values()
     return JsonResponse(list(lg),safe=False)
@@ -34,4 +37,28 @@ def  log_message(request):
     else:
         return render(request, "hello/log_message.html", {"form": form})
 
-        
+# include rest framework and make the api for the log messages 
+# get all the messages
+@api_view(['GET','POST'])
+def all_messages(request):
+    if request.method=='GET':
+        log=LogMessage.objects.all()
+        serializer=LogMessageSerializer(log,many=True)
+        return Response({
+        "Status":True,
+        "data":serializer.data,
+        "message":"Success"})
+    
+    if request.method=='POST':
+        data=request.data
+        data['log_date']=datetime.datetime.now()
+        serializer=LogMessageSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response({
+        "Status":True,
+        "data":serializer.data,
+        "messages":"Message Created Succesfully "},
+        status=status.HTTP_201_CREATED)
+    
+

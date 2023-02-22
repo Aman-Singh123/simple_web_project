@@ -11,7 +11,6 @@ import json
 def home(request):
     return render(request,'account/home.html')
 
-
 @csrf_exempt
 def SignUp(request):
     print(f"request {request}")
